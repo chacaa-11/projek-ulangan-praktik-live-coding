@@ -3,21 +3,35 @@ Setiap destinasi memiliki nama, lokasi, tanggal kedatangan, dan budget.
 """
 
 def main():
-    destinasi = []
+    destinasi_domestic = []
+    destinasi_luarnegeri = []
 
     def tampilkan_daftar():
-        if not destinasi:
+        if not destinasi_domestic and not destinasi_luarnegeri:
             print("Tidak ada destinasi yang tercatat.")
             return
-        print("\nDaftar Destinasi Wisata:\n")
-        for d in destinasi:
-            print(f"Nama    : {d['nama']}")
-            print(f"Lokasi  : {d['lokasi']}")
-            print(f"Tanggal : {d['tanggal']}")
-            status_str = "[✓] sudah" if d.get('visited') else "[ ] belum"
-            print(f"Status  : {status_str} dikunjungi")
-            print(f"Budget  : Rp {d['budget']:,}")
-            print("-" * 30)
+        # domestic
+        if destinasi_domestic:
+            print("\nDestinasi Indonesia:\n")
+            for d in destinasi_domestic:
+                print(f"Nama    : {d['nama']}")
+                print(f"Lokasi  : {d['lokasi']}")
+                print(f"Tanggal : {d['tanggal']}")
+                status_str = "[✓] sudah" if d.get('visited') else "[ ] belum"
+                print(f"Status  : {status_str} dikunjungi")
+                print(f"Budget  : Rp {d['budget']:,}")
+                print("-" * 30)
+        # foreign
+        if destinasi_luarnegeri:
+            print("\nDestinasi Luar Negeri:\n")
+            for d in destinasi_luarnegeri:
+                print(f"Nama    : {d['nama']}")
+                print(f"Lokasi  : {d['lokasi']}")
+                print(f"Tanggal : {d['tanggal']}")
+                status_str = "[✓] sudah" if d.get('visited') else "[ ] belum"
+                print(f"Status  : {status_str} dikunjungi")
+                print(f"Budget  : Rp {d['budget']:,}")
+                print("-" * 30)
 
     def tambah_destinasi():
         print("Masukkan detail destinasi wisata. Tekan enter pada nama untuk kembali ke menu.")
@@ -29,19 +43,25 @@ def main():
             tanggal = input("Tanggal kedatangan (YYYY-MM-DD): ").strip()
             status = input("Sudah dikunjungi? (y/n): ").strip().lower()
             visited = status == "y"
+            jenis = input("Apakah destinasi di Indonesia? (y/n): ").strip().lower()
+            asing = jenis != "y"
             budget_str = input("Budget (angka, rupiah): ").strip()
             try:
                 budget = int(budget_str.replace(",", ""))
             except ValueError:
                 print("Budget tidak valid, di-set ke 0.")
                 budget = 0
-            destinasi.append({
+            entry = {
                 "nama": nama,
                 "lokasi": lokasi,
                 "tanggal": tanggal,
                 "budget": budget,
                 "visited": visited,
-            })
+            }
+            if asing:
+                destinasi_luarnegeri.append(entry)
+            else:
+                destinasi_domestic.append(entry)
             print("Destinasi ditambahkan.\n")
             lanjut = input("Tambah lagi? (y/n): ").strip().lower()
             if lanjut != "y":
@@ -76,6 +96,12 @@ def main():
         "Grand Canyon – Amerika Serikat",
         "Raja Ampat (versi internasional: Palau) – Palau",
         "Pantai Waikiki – Hawaii, Amerika Serikat",
+        "Machu Picchu – Peru",
+        "Colosseum – Roma, Italia",
+        "Taj Mahal – India",
+        "Santorini – Yunani",
+        "Air Terjun Niagara – Kanada/AS",
+        "Pulau Bora Bora – Polinesia Prancis",
     ]
 
     def lihat_rekomendasi():
