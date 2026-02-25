@@ -47,17 +47,49 @@ def main():
             if lanjut != "y":
                 break
 
+    # daftar rekomendasi statis (sederhana)
+    rekomendasi = [
+        "Taman Nasional Komodo - Nusa Tenggara Timur",
+        "Kawah Putih - Jawa Barat",
+        "Danau Toba - Sumatera Utara",
+        "Candi Borobudur - Jawa Tengah",
+        "Pulau Weh - Aceh",
+        "Gunung Bromo - Jawa Timur",
+        "Derawan - Kalimantan Timur",
+        "Taman Mini Indonesia Indah - DKI Jakarta",
+        "Pantai Padang Padang - Bali",
+        "Lembang Ice Cream Park - Jawa Barat",
+        "Pantai Kuta - Bali",
+        "Kepulauan Seribu - DKI Jakarta",
+        "Air Terjun Tumpak Sewu - Jawa Timur",
+        "Pulau Belitung - Bangka Belitung",
+        "Bukit Tinggi dan Ngarai Sianok - Sumatera Barat",
+        "Pulau Karimunjawa - Jawa Tengah",
+        "Taman Laut Bunaken - Sulawesi Utara",
+        "Bali Safari & Marine Park - Bali",
+        "Jembatan Barelang - Kepulauan Riau",
+    ]
+
+    def lihat_rekomendasi():
+        print("\nRekomendasi Destinasi Wisata:\n")
+        for r in rekomendasi:
+            print(f"- {r}")
+        print()
+
     while True:
         print("\nMenu:")
         print("1. Tambah destinasi")
         print("2. Lihat semua destinasi")
-        print("3. Keluar")
-        pilihan = input("Pilih opsi (1/2/3): ").strip()
+        print("3. Lihat rekomendasi")
+        print("4. Keluar")
+        pilihan = input("Pilih opsi (1/2/3/4): ").strip()
         if pilihan == "1":
             tambah_destinasi()
         elif pilihan == "2":
             tampilkan_daftar()
         elif pilihan == "3":
+            lihat_rekomendasi()
+        elif pilihan == "4":
             print("Keluar. Sampai jumpa!")
             break
         else:
