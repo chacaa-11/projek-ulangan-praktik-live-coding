@@ -69,10 +69,24 @@ def main():
         "Bali Safari & Marine Park - Bali",
         "Jembatan Barelang - Kepulauan Riau",
     ]
+    # daftar rekomendasi luar negeri
+    rekomendasi_luar = [
+        "Menara Eiffel – Paris, Prancis",
+        "Tembok Besar – Tiongkok",
+        "Grand Canyon – Amerika Serikat",
+        "Raja Ampat (versi internasional: Palau) – Palau",
+        "Pantai Waikiki – Hawaii, Amerika Serikat",
+    ]
 
     def lihat_rekomendasi():
-        print("\nRekomendasi Destinasi Wisata:\n")
+        print("\nRekomendasi Destinasi Wisata (Indonesia):\n")
         for r in rekomendasi:
+            print(f"- {r}")
+        print()
+
+    def lihat_rekomendasi_luar():
+        print("\nRekomendasi Destinasi Wisata (Luar Negeri):\n")
+        for r in rekomendasi_luar:
             print(f"- {r}")
         print()
 
@@ -80,9 +94,10 @@ def main():
         print("\nMenu:")
         print("1. Tambah destinasi")
         print("2. Lihat semua destinasi")
-        print("3. Lihat rekomendasi")
-        print("4. Keluar")
-        pilihan = input("Pilih opsi (1/2/3/4): ").strip()
+        print("3. Lihat rekomendasi Indonesia")
+        print("4. Lihat rekomendasi luar negeri")
+        print("5. Keluar")
+        pilihan = input("Pilih opsi (1/2/3/4/5): ").strip()
         if pilihan == "1":
             tambah_destinasi()
         elif pilihan == "2":
@@ -90,6 +105,8 @@ def main():
         elif pilihan == "3":
             lihat_rekomendasi()
         elif pilihan == "4":
+            lihat_rekomendasi_luar()
+        elif pilihan == "5":
             print("Keluar. Sampai jumpa!")
             break
         else:
