@@ -14,6 +14,8 @@ def main():
             print(f"Nama    : {d['nama']}")
             print(f"Lokasi  : {d['lokasi']}")
             print(f"Tanggal : {d['tanggal']}")
+            status_str = "[✓] sudah" if d.get('visited') else "[ ] belum"
+            print(f"Status  : {status_str} dikunjungi")
             print(f"Budget  : Rp {d['budget']:,}")
             print("-" * 30)
 
@@ -25,6 +27,8 @@ def main():
                 break
             lokasi = input("Lokasi: ").strip()
             tanggal = input("Tanggal kedatangan (YYYY-MM-DD): ").strip()
+            status = input("Sudah dikunjungi? (y/n): ").strip().lower()
+            visited = status == "y"
             budget_str = input("Budget (angka, rupiah): ").strip()
             try:
                 budget = int(budget_str.replace(",", ""))
@@ -36,8 +40,12 @@ def main():
                 "lokasi": lokasi,
                 "tanggal": tanggal,
                 "budget": budget,
+                "visited": visited,
             })
             print("Destinasi ditambahkan.\n")
+            lanjut = input("Tambah lagi? (y/n): ").strip().lower()
+            if lanjut != "y":
+                break
 
     while True:
         print("\nMenu:")
